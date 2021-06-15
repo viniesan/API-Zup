@@ -9,6 +9,6 @@ import br.com.api.zupapi.model.Pessoa;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
-	Optional<Pessoa> findByEmail (String nome);
+	Optional<Pessoa> findByEmail(String nome);
 	Pessoa findByCpf(String cpf);
 }

@@ -10,14 +10,14 @@ import br.com.api.zupapi.repository.PessoaRepository;
 
 @Service
 public class PessoaService {
-	
+
 	@Autowired
 	private PessoaRepository pessoaRepository;
-	
-	public Pessoa put(Pessoa pessoa) {
+
+	public Pessoa post(Pessoa pessoa) {
 		return pessoaRepository.save(pessoa);
 	}
-	
+
 	public List<Pessoa> get(){
 		return pessoaRepository.findAll();
 	}
