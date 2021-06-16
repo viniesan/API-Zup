@@ -20,42 +20,41 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-
-import br.com.api.zupapi.model.Pessoa;
-import br.com.api.zupapi.service.PessoaService;
+import br.com.api.zupapi.model.Carro;
+import br.com.api.zupapi.service.CarroService;
 
 @Controller
 @RestController
-@RequestMapping("pessoa")
-public class PessoaController {
+@RequestMapping("carro")
+public class CarroController {
 
 	@Autowired
-	PessoaService pessoaService;
+	CarroService carroService;
 
 	@PostMapping
-	public ResponseEntity<Pessoa> post(@RequestBody @Valid Pessoa pessoa){
-		Pessoa person = pessoaService.post(pessoa);
-		return new ResponseEntity<>(person, HttpStatus.CREATED);
+	public ResponseEntity<Carro> post(@RequestBody @Valid Carro carro){
+		Carro car = carroService.post(carro);
+		return new ResponseEntity<>(car, HttpStatus.CREATED);
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Pessoa>> get(){
-		return ResponseEntity.ok(pessoaService.get());
+	public ResponseEntity<List<Carro>> get(){
+		return ResponseEntity.ok(carroService.get());
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> put(@RequestBody Pessoa pessoa, @PathVariable Long id){
-		Optional<Pessoa> person = pessoaService.put(id, pessoa);
-		if(!person.isPresent()) {
+	public ResponseEntity<?> put(@RequestBody Carro carro, @PathVariable Long id){
+		Optional<Carro> car = carroService.put(id, carro);
+		if(!car.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(person);    	
+		return ResponseEntity.status(HttpStatus.OK).body(car);    	
 	}
 
 	@DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id){
-		pessoaService.delete(id);
+		carroService.delete(id);
 	}
 
 }
