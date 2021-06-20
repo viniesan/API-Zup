@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.zupapi.model.Carro;
+import br.com.api.zupapi.model.CarroRequest;
 import br.com.api.zupapi.service.CarroService;
 
-@Controller
 @RestController
 @RequestMapping("carro")
 public class CarroController {
@@ -32,7 +31,7 @@ public class CarroController {
 	CarroService carroService;
 
 	@PostMapping
-	public ResponseEntity<Carro> post(@RequestBody @Valid Carro carro){
+	public ResponseEntity<Carro> post(@RequestBody @Valid CarroRequest carro){
 		Carro car = carroService.post(carro);
 		return new ResponseEntity<>(car, HttpStatus.CREATED);
 	}
@@ -52,7 +51,7 @@ public class CarroController {
 	}
 
 	@DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id){
 		carroService.delete(id);
 	}
