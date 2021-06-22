@@ -19,6 +19,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 
@@ -44,11 +45,9 @@ public class Pessoa {
 
 	@Email
 	@Column(unique = true)
-
 	private String email;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "pessoa", fetch = FetchType.EAGER)
+	@OneToMany (mappedBy = "pessoa")
 	private List<Carro> carros;
 
 	public Pessoa(){

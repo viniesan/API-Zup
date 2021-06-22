@@ -1,85 +1,33 @@
 package br.com.api.zupapi.model;
 
-
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
-@Entity(name = "carro")
-public class Carro {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@JsonIgnore
-	@ManyToOne
-	private Pessoa pessoa;
+public class CarroResponse {
 	
-	@JsonProperty("Valor")
-	private String valor;
+private String valor;
 	
-	@Column(nullable = false)
-	@JsonProperty("Marca")
+	
 	private String marca;
 	
-	@Column(nullable = false)
-	@JsonProperty("Modelo")
 	private String modelo;
 	
-	@Column(nullable = false)
-	@JsonProperty("AnoModelo")
 	private String anoModelo;
 	
-	@JsonProperty("Combustivel")
 	private String combustivel;
 	
-	@JsonProperty("CodigoFipe")
 	private String codigoFipe;
 	
-	@JsonProperty("MesReferencia")
 	private String mesReferencia;
 	
-	@JsonProperty("TipoVeiculo")
 	private String tipoVeiculo;
 	
-	@JsonProperty("SiglaCombustivel")
 	private String siglaCombustivel;
 	
 	private String diaRodizio;
 	
-
-	public String getDiaRodizio() {
-		return diaRodizio;
-	}
-
-	public void setDiaRodizio(String diaRodizio) {
-		this.diaRodizio = diaRodizio;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Pessoa getPessoa() {
-		return pessoa;
-	}
-
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
-	}
+	private Boolean rodizioAtivo;
 
 	public String getValor() {
 		return valor;
@@ -152,4 +100,21 @@ public class Carro {
 	public void setSiglaCombustivel(String siglaCombustivel) {
 		this.siglaCombustivel = siglaCombustivel;
 	}
+
+	public String getDiaRodizio() {
+		return diaRodizio;
+	}
+
+	public void setDiaRodizio(String diaRodizio) {
+		this.diaRodizio = diaRodizio;
+	}
+
+	public Boolean getRodizioAtivo() {
+		return rodizioAtivo;
+	}
+
+	public void setRodizioAtivo(Boolean rodizioAtivo) {
+		this.rodizioAtivo = rodizioAtivo;
+	}
+
 }

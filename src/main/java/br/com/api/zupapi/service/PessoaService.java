@@ -32,8 +32,6 @@ public class PessoaService {
 		return person;
 	}
 
-
-
 	public void delete(Long id){
 		Optional<Pessoa> person = pessoaRepository.findById(id);
 		if(person.isPresent())  {

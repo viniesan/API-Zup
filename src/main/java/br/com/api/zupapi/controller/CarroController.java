@@ -21,6 +21,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.zupapi.model.Carro;
 import br.com.api.zupapi.model.CarroRequest;
+import br.com.api.zupapi.model.CarroResponse;
+import br.com.api.zupapi.model.Pessoa;
 import br.com.api.zupapi.service.CarroService;
 
 @RestController
@@ -37,8 +39,8 @@ public class CarroController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<Carro>> get(){
-		return ResponseEntity.ok(carroService.get());
+	public ResponseEntity<List<CarroResponse>> get(CarroRequest carro){
+		return ResponseEntity.ok(carroService.get(carro));
 	}
 
 	@PutMapping("/{id}")
